@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Kines Cinema Ticket Verification</title>
+<style>
+body{
+font-family:Arial;
+background:#111;
+color:white;
+text-align:center;
+padding-top:100px;
+}
+.valid{
+color:lime;
+font-size:30px;
+}
+.invalid{
+color:red;
+font-size:30px;
+}
+</style>
+</head>
+<body>
+
+<h1>🕷️ Kines Cinema</h1>
+<h2>Spider-Man: Brand New Day</h2>
+<h3>1 August 2026</h3>
+
+<div id="result"></div>
+
+<script>
+
+const validTickets = [];
+
+for(let i=1;i<=50;i++){
+validTickets.push("SP"+String(i).padStart(3,"0"));
+}
+
+const params = new URLSearchParams(window.location.search);
+const id = params.get("id");
+
+if(validTickets.includes(id)){
+document.getElementById("result").innerHTML =
+`<div class="valid">
+✅ Ticket Valid<br><br>
+Ticket ID: ${id}<br><br>
+Enjoy the movie! 🍿
+</div>`;
+}
+else{
+document.getElementById("result").innerHTML =
+`<div class="invalid">
+❌ Invalid Ticket
+</div>`;
+}
+
+</script>
+
+</body>
+</html>
