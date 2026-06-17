@@ -1,59 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Kines Cinema Ticket Verification</title>
-<style>
-body{
-font-family:Arial;
-background:#111;
-color:white;
-text-align:center;
-padding-top:100px;
-}
-.valid{
-color:lime;
-font-size:30px;
-}
-.invalid{
-color:red;
-font-size:30px;
-}
-</style>
+  <title>Spiderman Ticket Validation</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      padding-top: 80px;
+      background: #0f172a;
+      color: white;
+    }
+    .valid { color: #22c55e; font-size: 40px; }
+    .invalid { color: #ef4444; font-size: 40px; }
+  </style>
 </head>
 <body>
 
-<h1>🕷️ Kines Cinema</h1>
-<h2>Spider-Man: Brand New Day</h2>
-<h3>1 August 2026</h3>
-
-<div id="result"></div>
+<h1>🕷️ Kine's Spiderman Movie Ticket</h1>
+<h2 id="ticket"></h2>
+<p id="status"></p>
 
 <script>
+  const params = new URLSearchParams(window.location.search);
+  const ticket = params.get("id");
 
-const validTickets = [];
+  const validTickets = [
+    "SPID001","SPID002","SPID003","SPID004","SPID005",
+    "SPID006","SPID007","SPID008","SPID009","SPID010",
+    "SPID011","SPID012","SPID013","SPID014","SPID015",
+    "SPID016","SPID017","SPID018","SPID019","SPID020",
+    "SPID021","SPID022","SPID023","SPID024","SPID025",
+    "SPID026","SPID027","SPID028","SPID029","SPID030",
+    "SPID031","SPID032","SPID033","SPID034","SPID035",
+    "SPID036","SPID037","SPID038","SPID039","SPID040",
+    "SPID041","SPID042","SPID043","SPID044","SPID045",
+    "SPID046","SPID047","SPID048","SPID049","SPID050"
+  ];
 
-for(let i=1;i<=50;i++){
-validTickets.push("SP"+String(i).padStart(3,"0"));
-}
+  document.getElementById("ticket").innerText = "Ticket ID: " + ticket;
 
-const params = new URLSearchParams(window.location.search);
-const id = params.get("id");
-
-if(validTickets.includes(id)){
-document.getElementById("result").innerHTML =
-`<div class="valid">
-✅ Ticket Valid<br><br>
-Ticket ID: ${id}<br><br>
-Enjoy the movie! 🍿
-</div>`;
-}
-else{
-document.getElementById("result").innerHTML =
-`<div class="invalid">
-❌ Invalid Ticket
-</div>`;
-}
-
+  if (validTickets.includes(ticket)) {
+    document.getElementById("status").innerHTML = "✅ VALID";
+    document.getElementById("status").className = "valid";
+  } else {
+    document.getElementById("status").innerHTML = "❌ INVALID";
+    document.getElementById("status").className = "invalid";
+  }
 </script>
 
 </body>
